@@ -1,0 +1,40 @@
+<div class="container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+      
+        <div class="card">
+          <h3 class="card-header">Player</h3>
+          <div class="card-body">
+            <form [formGroup]="newPlayerForm" (ngSubmit)="SavePlayer(newPlayerForm.value)" autocomplete="off" novalidate>
+              <div class="form-group row" [ngClass]="{'error': valiateFirstName()}">
+                <label class="col-form-label col-sm-2" for="firstNameCtl">First Name:</label>
+                <em *ngIf="valiateFirstName()">Required</em>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="firstNameCtl" name="firstNameCtl" id="firstNameCtl" placeholder="First Name..." >
+                </div>
+              </div>
+      
+              <div class="form-group row" [ngClass]="{'error': validateLastName()}">
+                <label class="col-form-label col-sm-2" for="lastNameCtl">Last Name:</label>
+                <em *ngIf="validateLastName()">Required</em>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="lastNameCtl" formControlName="lastNameCtl" name="lastname" placeholder="Last Name...">
+                </div>
+              </div>
+      
+              <div class="form-group row" [ngClass]="{'error': validateEmail()}">
+                <label class="col-form-label col-sm-2" for="emailCtl">Email:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="emailCtl" name="email" formControlName="emailCtl" placeholder="Player Email...">
+                </div>
+              </div>
+      
+              <div class="form-group row">
+                <div class="col-sm-4 mt-sm-3">
+                  <button class="btn btn-primary mr-sm-2" type="submit" [disabled]="newPlayerForm.invalid">Save</button>
+                  <a class="btn btn-secondary" [routerLink]="['/allplayers']">Cancel</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

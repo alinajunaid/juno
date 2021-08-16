@@ -1,0 +1,15 @@
+.container{
+    margin-top: 8%;
+}
+ 
+.inner{
+    overflow: hidden;
+}
+ 
+.inner .card{
+    transition: all 1.5s ease;
+}
+ 
+.inner:hover .card{
+    transform: scale(1.5);
+}

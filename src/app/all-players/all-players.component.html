@@ -1,0 +1,38 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">
+            <h2 class="card-title">List of All Players</h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <h4 class="card-header">
+            Select the Players to Invite to your Game
+            <!-- <a [routerLink]="['/players', 'new']" class="btn btn-sm btn-primary float-right">Add New Player</a> -->
+        </h4>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of allPlayers">
+                        <td>{{player?.FirstName}}</td>
+                        <td>{{player?.LastName}}</td>
+                        <td>{{player?.email}}</td>
+                        <td>
+                            <!--<a [routerLink]="['/players', player.GamePlayerId]" class="btn btn-outline-secondary btn-sm mr-2">Edit</a> btn btn-info btn-sm mr-2 -->
+                            <button class="btn btn-outline-primary btn-sm mr-2" (click)="invitePlayer(player)">Invite</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

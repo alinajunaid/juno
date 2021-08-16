@@ -1,0 +1,181 @@
+<section>
+    <!--
+        *******************************************************************************************
+        Waiting for Game
+    -->
+    <div *ngIf="waitingForGame" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Waiting!</strong> For all the players to join the game.
+        <p>so far {{currentPlayerCount}} players have joined out of {{expectedPlayerCount}} invited</p>
+        <div *ngIf="IsOwner">
+            <p>or if you dont like waiting...</p>
+            <button class="btn btn-warning" (click)='StartGame_clicked'>Start Game</button>
+        </div>
+    </div>
+
+    <!--
+        *******************************************************************************************
+        Waiting for Turn
+    -->
+    <div *ngIf="waitingForTurn">
+        <p>{{this.loggedInUser}} You are Waiting for Your Turn</p>
+        <div>
+            <p>Current players in the game {{this.nameOfTheGame}}:</p>
+            <div class="row" *ngFor="let item of this.gameStatus.GamePlayers; index as i" style="margin-top: 5px">
+                <div class="chip">
+                    <img *ngIf="item.Gender==0" src="../../assets/womanAvatar.jpg" alt="FemalePlayer" width="96"
+                        height="96">
+                    <img *ngIf="item.Gender==1" src="../../assets/manAvatar.jpg" alt="MalePlayer" width="96"
+                        height="96">
+                    {{item.name}}
+                    <strong *ngIf="i==this.gameStatus.CurrentPlayer"> <!--<i class="fas fa-arrow-circle-left"></i> -->
+                            ...Currently Playing</strong>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <!--<ngx-loading [show]="waitingForTurn" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>-->
+            Please wait...
+            <div *ngIf="waitingForTurn" class="offset-md-4 col-md-2" style="text-align: center">
+                <!-- <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div> -->
+                <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    *******************************************************************************************
+    Its Your turn
+-->
+<section>
+    <div *ngIf="itsYourTurn">
+
+        <!--
+            *******************************************************************************************
+            Show game deck
+        -->
+        <div class="row">
+            
+            <div class="col">
+                <label>Current Card is:</label>
+            </div>
+            <div class="col">
+                <div class="card shadow" style="width: 200px; background-color: lightgray">
+                    <img class="card-img-top"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/UNO_Logo.svg/1200px-UNO_Logo.svg.png"
+                        alt="card image">
+                    <div class="card-body" style="text-align: center">
+                        <h4>{{convertToCard((currentCard))}}</h4>
+                        <!--<button class="btn btn-info" disabled=true> - - </button>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div>
+            <span></span>
+            <hr>
+            <span></span>
+        </div>
+
+        <!--
+            *******************************************************************************************
+            Show Player Hand
+        -->
+        <div class="row">
+            <div class="col">
+                <label>Your Hand:</label>
+            </div>
+        </div>
+
+        <div class="row" style="align-items: center">
+            <div style="text-align: center" class="col">
+                <!--<button class="btn btn-outline-success" [disabled]="currentFirstCard==0" (click)="OnLeft()">
+                    <i class="fas fa-arrow-circle-left">Left</i>
+                    <img src="../assets/leftArrow1.jpg">
+                </button>-->
+            </div>
+            <div *ngFor="let item of msgList; let i = index" class="col">
+                <app-test-card thisCardId={{item?.CardNumber}} thisCardTitle={{item?.CardTitle}}
+                    (cardSelected)='onCardSelected($event)'></app-test-card>
+            </div>
+            <div style="text-align: center; align-items: center" class="col">
+                <button class="btn btn-outline-success" [disabled]="disableRightButton" (click)="OnRight()">
+                    <img src="../assets/rightArrow1.jpg">
+                </button>
+            </div>
+        </div>
+
+        <div>
+            <span></span>
+            <hr>
+            <span></span>
+        </div>
+
+
+        <!--
+            *******************************************************************************************
+            Draw card from Game Deck
+        -->
+        <div class="row" style="text-align: center; align-items: center">
+
+            <div class="col">
+                <button class="btn btn-secondary" (click)="DrawCard()">Draw From Deck</button>
+            </div>
+        </div>
+
+
+        <!--
+            *******************************************************************************************
+            Modal to show game results
+        -->
+        <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{modalTitle}}</h4>
+                        <!-- <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button> -->
+                    </div>
+
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p>{{modalMessage}}</p>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                            (click)="hideModal()">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--
+            *******************************************************************************************
+            Show Spinners when leaving
+        -->
+        <br />
+        <span></span>
+        <br />
+        <div *ngIf="waiting" class="offset-md-4 col-md-2" style="text-align: center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</section>

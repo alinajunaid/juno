@@ -1,0 +1,54 @@
+
+
+POST https://junogameservice.azurewebsites.net/api/TestJunoGetGameStatus
+        ?code=vkhJedaWBkgZNC3L4zM3YJfl6zbWmhCntPauM27TMK2cOMuZK4gHaw==
+Content-Type: application/json
+
+{
+    "GameId": "f3004b87-55b4-478f-98bd-35740402349f",
+    "GamePlayerId": 0
+}
+
+###
+POST https://junogameservice.azurewebsites.net/api/TestJunoCreateGame
+        ?code=9UD4ABQxwUM7OEzVYo2geacoyg83pzpMIn23D6ZCiLA15I2I94Bacg==
+Content-Type: application/json
+
+{
+    "GameName": "Reboot-game-1",
+    "GameDescription": "",
+    "PlayerName": "",
+    "Email": "",
+    "PlayerCount": 2,
+    "PlayerId": "00ab31ae-8022-4366-b94f-6f980dd6347c"
+}
+
+
+###
+
+POST http://junogameservice.azurewebsites.net/api/TestJunoCreateGame
+        ?code=HXqkh9B92QoxyPpH97AW71eXF8qdHY0NCBz1QaG4WDwyMlN9Fc5MEw==
+Content-Type: application/json
+
+{
+    "GameName": "reboot2",
+    "GameDescription": "a new game after a long time",
+    "PlayerCount": "2",
+    "PlayerName": "Junaid",
+    "PlayerId": "00ab31ae-8022-4366-b94f-6f980dd6347c"
+}
+
+###
+
+POST http://junogameservice.azurewebsites.net/api/TestJunoInvitePlayer
+        ?code=ppQ0vbTFIJM2c8Um8LU58NQxK8oc6wQnSkB6j1jSNz7TWw8e4TSklA==
+Content-Type: application/json
+
+{
+    "GameId": "b91a53b7-6122-47b8-921d-9c6cfbb4d03d",
+    "PlayerId": "3ae664a3-8924-4872-84a4-924720b2827a",
+    "InviteeName": "Aisha",
+    "InvitationDate": "Sat Jul 31 2021 21:27:01 GMT-0400 (Eastern Daylight Time)",
+    "InviterName": "00ab31ae-8022-4366-b94f-6f980dd6347c",
+    "GameName": "reboot2"
+}

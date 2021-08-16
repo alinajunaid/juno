@@ -1,0 +1,85 @@
+<div class="container">
+    <h1>New Game</h1>
+    <hr>
+
+    <form class="center-text" [formGroup]="newGameForm" (ngSubmit)="createGame(newGameForm.value)" autocomplete="off"
+        novalidate>
+
+        <div class="form-group row" [ngClass]="{'error':validateGameName()}">
+            <div class="offset-md-2 col-md-2">
+                <label class="inputLabels" for="newGameName">Game Name:</label>
+            </div>
+            <div class="col-md-4">
+                <em *ngIf="validateGameName()">Required</em>
+                <input formControlName="newGameName" id="newGameName" type="text" class="form-control"
+                    placeholder="Game's name...">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-md-2 col-md-2">
+                <label class="inputLabels" for="newGameDesc">Game Description:</label>
+            </div>
+            <div class="col-md-4">
+                <input formControlName="newGameDesc" id="newGameDesc" type="text" class="form-control"
+                    placeholder="Game's Description...">
+            </div>
+        </div>
+
+        <div class="form-group row" [ngClass]="{'error':validatePlayerCount()}">
+            <div class="offset-md-2 col-md-2">
+                <label class="inputLabels" for="newGamePlayerCount">Number of Players:</label>
+            </div>
+            <div class="col-md-4">
+                <em *ngIf="validatePlayerCount()">Required</em>
+                <input formControlName="newGamePlayerCount" id="newGamePlayerCount" type="text" class="form-control"
+                    placeholder="Number of Players...">
+            </div>
+        </div>
+
+        <div class="form-group row" [ngClass]="{'error':validatePlayerName()}">
+            <div class="offset-md-2 col-md-2">
+                <label class="inputLabels" for="newGamePlayerName">Your Name:</label>
+            </div>
+            <div class="col-md-4">
+                <em *ngIf="validatePlayerName()">Required</em>
+                <input formControlName="newGamePlayerName" id="newGamePlayerName" type="text" class="form-control"
+                    placeholder="Your name...">
+            </div>
+        </div>
+
+        <!-- <div class="form-group row" [ngClass]="{'error':validatePlayerEmail()}">
+            <div class="offset-md-2 col-md-2">
+                <label class="inputLabels" for="newGamePlayerEmail">Your Email:</label>
+            </div>
+            <div class="col-md-4">
+                <em *ngIf="validatePlayerEmail()">Required</em>
+                <input formControlName="newGamePlayerEmail" id="newGamePlayerEmail" type="text" class="form-control"
+                    placeholder="Your email...">
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="offset-md-4 col-md-1">
+                <button type="submit" [disabled]="newGameForm.invalid" class="btn btn-primary">Create</button>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-secondary" (click)="clearNewGame()">Clear</button>
+            </div>
+            <div class="col-md-1">
+                <a [routerLink]="['/']" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </form>
+    <br />
+    <div class="row">
+        <div *ngIf="waiting" class="offset-md-4 col-md-2" style="text-align: center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>

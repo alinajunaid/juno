@@ -1,0 +1,29 @@
+<div class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
+    <a class="navbar-brand" [routerLink]="['/']">MyUno</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#theMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="theMenu" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-item nav-link" [routerLink]="['/myprofile']" routerLinkActive="['link-active']">My
+                    Profile</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-item nav-link" [routerLink]="['/myfriends']" routerLinkActive="['link-active']">My
+                    Friends</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-item nav-link" [routerLink]="['/allplayers']" routerLinkActive="['link-active']">All
+                    Players</a>
+            </li>
+
+            <!-- <li class="nav-item">
+                <a class="nav-item nav-link" [routerLink]="['/gameplay', '123']" routerLinkActive="['link-active']">GamePlay</a>
+            </li> -->
+
+        </ul>
+    </div>
+</div>

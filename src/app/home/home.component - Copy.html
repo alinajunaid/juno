@@ -1,0 +1,109 @@
+<div>
+    <div class="container">
+        <div class="jumbotron bg-cover"
+            style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%), url(https://gamesplusinc.com/wp-content/uploads/2016/11/3-8.jpg)"> <!--url(https://placeimg.com/1000/480/nature)-->
+            <div class="container">
+                <h6 class="display-4">Welcome!</h6>
+                <p class="lead">To a Fun Game you can Enjoy with Friends and Family </p>
+                <hr class="my-4">
+                <p>{{welcomeMessage}}</p>
+
+                <div class="jumbotron" style="opacity: 0.7;">
+                    <h1 class="display-2">MyUno</h1>
+                    <hr class="my-4" />
+                    <p>By Junaid Ahsan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loggedIn" class="card">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+        <h4 class="card-header">
+            <div class="row">
+                <div class="offset-sm-2 col-sm-2">
+                    Login
+                </div>
+                <div class="offset-sm-4 col-sm-2">
+                    Register
+                </div>
+            </div>
+        </h4>
+        <div id="LoginOrRegister" class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>User Name</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" alt="Gamer Name" [(ngModel)]='userNameField'>
+                </div>
+                <div class="offset-sm-2 col-sm-2">
+                    <label>First Name</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" alt="First Name" [(ngModel)]='firstNameField'>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>Password</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type='password' [(ngModel)]='passwordField'>
+                </div>
+                <div class="offset-sm-2 col-sm-2">
+                    <label>Last Name</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" alt="Last Name" [(ngModel)]='lastNameField'>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-sm-6 col-sm-2">
+                    <label>Email</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" alt="Player Email" [(ngModel)]='userEmailField'>
+                </div>
+            </div>
+            <div class="row">
+                <p></p>
+            </div>
+            <div class="row">
+                <div class="offset-md-4 col-sm-1">
+                    <button class="btn btn-info btn-sm mr-2" (click)="login_clicked()">Login</button>
+                </div>
+                <div class="offset-sm-5 col-sm-2">
+                    <button class="btn btn-info btn-sm mr-2" (click)="register_clicked()">Register</button>
+                </div>
+            </div>
+            <div class="row"></div>
+        </div>
+    </div>
+
+    <div *ngIf="loggedIn" class="card">
+        <h4 class="card-header">
+            <div class="row">
+                <div class="offset-sm-3">
+                    Select One of the following to get started!
+                </div>
+            </div>
+        </h4>
+        <div class="card-body">
+            <div class="row">
+                <div class="offset-sm-4 col-sm-2">
+                    <a [routerLink]="['/creategame']" (click)="startGame_click()" class="btn btn-info btn-sm mr-2">Start a Game</a>
+                </div>
+                <div class="col-md-3">
+                    <a [routerLink]="['/joingame']" (click)="startGame_click()" class="btn btn-info btn-sm mr-2">Join a Game</a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="waiting" style="text-align: center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
+    </div>

@@ -1,0 +1,182 @@
+<div>
+    <div class="container">
+        <div class="jumbotron bg-cover"
+            style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%), url(https://gamesplusinc.com/wp-content/uploads/2016/11/3-8.jpg)">
+            <!--url(https://placeimg.com/1000/480/nature)-->
+            <div class="container">
+                <h1 class="display-2">MyUno</h1>
+                <p class="lead">Welcome To a Fun Game you can Enjoy with Friends and Family</p>
+                <hr class="my-4">
+
+                <div *ngIf="!loggedIn" class="jumbotron" style="text-align: center; opacity: 0.7;">
+
+                    <div *ngIf="!userRegistering" id="Login" class="card-body">
+                        <div class="card-header">
+                            <h3>Please Log in</h3>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>User Name</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" alt="Gamer Name" [(ngModel)]='userNameField'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>Password</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type='password' [(ngModel)]='passwordField'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <div class="offset-sm-4 col-sm-2">
+                                <button class="btn btn-info btn-sm mr-2" (click)="login_clicked()">Login</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <p>New User?</p>
+                            <div class="col-sm-1">
+                                <a href="#" (click)="gotoregister_clicked()">Register</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="userRegistering" id="Register" class="card-body">
+                        <div class="card-header">
+                            <h3>Please Register</h3>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>User Name</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" alt="User Name" [(ngModel)]='userNameField'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>First Name</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" alt="First Name" [(ngModel)]='firstNameField'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>Last Name</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" alt="Last Name" [(ngModel)]='lastNameField'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" alt="Player Email" [(ngModel)]='userEmailField'>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <div class="offset-sm-4 col-sm-2">
+                                <button class="btn btn-info btn-sm mr-2" (click)="register_clicked()">Register</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <p>Already Registered?</p>
+                            <div class="col-sm-2">
+                                <a href="#" (click)="gotologin_clicked()">Login</a>
+                            </div>
+                        </div>
+
+                        <div class="row"></div>
+                    </div>
+
+                    <hr class="my-4" />
+                    <p>By Junaid Ahsan</p>
+                </div>
+
+                <div *ngIf="loggedIn" class="jumbotron" style="text-align: center; opacity: 0.7;">
+                    <div class="card">
+                        <h4 class="card-header">
+                            <div class="row">
+                                <div class="offset-sm-3">
+                                    Select One of the following to get started!
+                                </div>
+                            </div>
+                        </h4>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="offset-sm-2 col-sm-4">
+                                    <a [routerLink]="['/creategame']" (click)="startGame_click()"
+                                        class="btn btn-info btn-sm mr-4">Start Game</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a [routerLink]="['/joingame']" (click)="startGame_click()"
+                                        class="btn btn-info btn-sm mr-3">Join Game</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="waiting" style="text-align: center">
+                            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>

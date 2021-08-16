@@ -1,0 +1,54 @@
+<div class="inner">
+    <div class="card shadow" style="width: 200px">
+        <img class="card-img-top"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/UNO_Logo.svg/1200px-UNO_Logo.svg.png"
+            alt="card image">
+        <div class="card-body" style="text-align: center">
+            <h4>{{thisCardTitle}}</h4>
+            <p>{{thisCardId}} card</p>
+            <!--<select *ngIf="thisCardId>6" [(ngModel)]="selectedColor" [(ngOptions)]="x.ColorName for x in this.cardColorList"></select>-->
+            <!-- <div *ngIf="thisCardId>56" class="row" style="text-align: center">
+                <select [(ngModel)]="selectedColor">
+                    <option value="" disabled>Pick color</option>
+                    <option>Blue</option>
+                    <option>Red</option>
+                    <option>Yellow</option>
+                    <option>Green</option>
+                </select>
+            </div> -->
+            <!-- <div class="row" style="text-align: center"> -->
+                <button class="btn btn-info" (click)="localClick()">Select</button>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+<!--
+            *******************************************************************************************
+            Modal to show game results
+        -->
+        <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{thisCardTitle}}</h4>
+                        <!-- <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button> -->
+                    </div>
+
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p>{{thisCardTitle}}</p>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                            (click)="hideModal()">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
