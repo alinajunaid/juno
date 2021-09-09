@@ -1,72 +1,97 @@
-<app-show-notification></app-show-notification>
-<p>my-friends works with {{SelectedCard}} items works!</p>
-
-<div class="row" style="align-items: center">
-    <!--<div style="text-align: center" class="col"><button [disabled]="currentFirstCard==0" (click)="OnLeft()">left</button></div>-->
-    <div *ngFor="let item of msgList; let i = index" class="col">
-        <app-test-card thisCardId={{item}} (cardSelected)='onCardSelected($event)'></app-test-card>
-    </div>
-    <!--<div style="text-align: center; align-items: center" class="col"><button [disabled]="currentFirstCard>6" (click)="OnRight()">right</button></div> <!--*ngIf="currentFirstCard<7"-->
-</div>
-
 <div class="container">
-    <h2>Basic Table</h2>
-    <p>Angular 7 open bootstrap 4 modal popup with dynamic data on click on bootstrap table row</p>            
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="table-primary">
-          <td id="firstname1">John</td>
-          <td id="lastname1">Doe</td>
-          <td id="email1">john@example.com</td>
-          <td id="1" (click)="onClick($event)" style="cursor: pointer;font-weight: bold;">Show</td>
-  
-        </tr>
-        <tr class="table-success">
-          <td id="firstname2">Mary</td>
-          <td id="lastname2">Moe</td>
-          <td id="email2">mary@example.com</td>
-          <td id="2" (click)="onClick($event)" style="cursor: pointer;font-weight: bold;">Show</td>
-        </tr>
-        <tr class="table-danger">
-          <td id="firstname3">July</td>
-          <td id="lastname3">Dooley</td>
-          <td id="email3">july@example.com</td>
-          <td id="3" (click)="onClick($event)" style="cursor: pointer;font-weight: bold;">Show</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- The Modal -->
-    <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">{{modalTitle}}</h4>
-              <!-- <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button> -->
-            </div>
-            
-  
-            <!-- Modal body -->
-            <div class="modal-body">
-             <p>{{modalMessage}}</p>
-            </div>
-            
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Close</button>
-            </div>
-            
-          </div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <h2>Manage Your Friends</h2>
+
+  <ul class="nav nav-pills mtb-4">
+    <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#sendFriendRequest">Send Friend Request</a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#acceptFriendRequests">Accept Received Friend Requests</a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#seeFriends">See Current List of Friends</a></li>
+  </ul>
+
+
+  <!-- Tab panes -->
+  <div class="tab-content mt-5">
+    <div class="tab-pane container active" id="sendFriendRequest">
+    
+      
+      <div class="row" >
+        <div class="offset-sm-1 col-sm-3">
+          <label for="friendEmail">Enter Friend's email/username</label>          
+        </div>
+        <div class="col-sm-4">
+          <input id="friendEmail" [(ngModel)]="sendRequestToEmail">
+        </div>
+        <div class="col-sm-2">
+          <button class="btn-primary" (click)=OnSendFriendRequest()>Send Request</button>
         </div>
       </div>
+    </div>
+
+
+    <div class="tab-pane container fade" id="acceptFriendRequests">
+      <div class="card">
+        <h4 class="card-header">
+            Received Friend Requests
+        </h4>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let friendRequest of PlayerFriendRequests">
+                        <td>{{friendRequest?.RequestingPlayerFirstName}}</td>
+                        <td>{{friendRequest?.RequestingPlayerLastName}}</td>
+                        <td>{{friendRequest?.RequestingPlayerEmail}}</td>
+                        <td>
+                            <!--<button class="btn btn-outline-primary btn-sm mr-2" (click)="viewGame(game)">View</button>-->
+                            <button class="btn btn-outline-primary btn-sm mr-2" (click)="AcceptFriendRequest(friendRequest)">Accept</button>
+                        </td>
+                        <td>
+                          <button class="btn btn-outline-primary btn-sm mr-2" (click)="DeclineFriendRequest(friendRequest)">Decline</button>
+                      </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="tab-pane container fade" id="seeFriends">
+      <div class="card">
+        <h4 class="card-header">
+            Currently {{currentPlayer}} is Friends With the Following Users
+        </h4>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let playerFriend of PlayerFriends">
+                        <td>{{playerFriend?.FirstName}}</td>
+                        <td>{{playerFriend?.LastName}}</td>
+                        <td>{{playerFriend?.PlayerEmail}}</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm mr-2" (click)="viewFriendProfile(playerFriend)">View</button>
+                        </td>
+                        <td>
+                          <button class="btn btn-outline-primary btn-sm mr-2" (click)="DeletePlayer(playerFriend)">Delete</button>
+                      </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

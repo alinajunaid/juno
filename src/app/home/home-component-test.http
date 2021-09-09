@@ -1,0 +1,104 @@
+### expects gameplayer
+
+http://localhost:7071/api/TestJunoCreatePlayer
+Content-Type: application/json
+
+{
+    "FirstName": "testuser-t6",
+    "LastName": "test-users",
+    "Email": "testuser.t6@testusers.com",
+    "Password": "testuser-t6",
+    "Gender": 1
+}
+
+### expects gameplayer
+
+http://localhost:7071/api/TestJunoLogin
+Content-Type: application/json
+
+{
+    "GamePlayerId": "testuser.t2@testusers.com",
+    "FirstName": "",
+    "LastName": "",
+    "email": "testuser.t2@testusers.com",
+    "Password": "testuser-t2",
+    "Gender": 1
+}
+
+### Requires FriendRequest
+
+http://localhost:7071/api/TestJunoCreateFriendRequest
+Content-Type: application/json
+
+{
+    "RequestingPlayerEmail": "testuser.t6@testusers.com",
+    "RequestingPlayerFirstName": "testuser-t6",
+    "RequestingPlayerLastName": "testusers",
+    "PlayerEmail": "testuser.t5@testusers.com",
+    "RequestMessage": "Please also accept my request"
+}
+
+### Requires GamePlayer
+
+http://localhost:7071/api/TestJunoGetAllFriendRequests
+Content-Type: application/json
+
+{
+    "FirstName": "testuser-t3",
+    "LastName": "test-users",
+    "email": "testuser.t5@testusers.com",
+    "Password": "testuser-t3",
+    "Gender": 1
+}
+
+### Requires FriendRequest
+
+http://localhost:7071/api/TestJunoAcceptFriendRequest
+Content-Type: application/json
+
+{
+    "RequestingPlayerEmail": "testuser.t1@testusers.com",
+    "RequestingPlayerFirstName": "testuser-t1",
+    "RequestingPlayerLastName": "testusers",
+    "PlayerEmail": "testuser.t3@testusers.com",
+    "RequestMessage": "Please also accept my request"
+}
+
+### Requires FriendRequest
+
+http://localhost:7071/api/TestJunoDeclineFriendRequest
+Content-Type: application/json
+
+{
+    "RequestingPlayerEmail": "testuser.t1@testusers.com",
+    "RequestingPlayerFirstName": "testuser-t1",
+    "RequestingPlayerLastName": "testusers",
+    "PlayerEmail": "testuser.t4@testusers.com",
+    "RequestMessage": "Please also accept my request"
+}
+
+### Requires GamePlayer
+
+http://localhost:7071/api/TestJunoGetAllPlayerFriends
+Content-Type: application/json
+
+{
+    "FirstName": "testuser-t3",
+    "LastName": "test-users",
+    "email": "testuser.t3@testusers.com",
+    "Password": "testuser-t3",
+    "Gender": 1
+}
+
+### from azure
+
+https://junogameservice.azurewebsites.net/api/TestJunoGetAllPlayerFriends?code=HXqkh9B92QoxyPpH97AW71eXF8qdHY0NCBz1QaG4WDwyMlN9Fc5MEw==
+Content-Type: application/json
+
+{
+    "FirstName": "testuser-t3",
+    "LastName": "test-users",
+    "email": "testuser.t3@testusers.com",
+    "Password": "testuser-t3",
+    "Gender": 1
+}

@@ -25,6 +25,7 @@ import { GamePlayComponent } from './game-play/game-play.component';
 import { LoginOrRegisterComponent } from './login-or-register/login-or-register.component';
 import { TestCardComponent } from './game-play/test-card/test-card.component';
 import { ShowNotificationComponent } from './show-notification/show-notification.component';
+import { AllGamesComponent } from './all-games/all-games.component';
 // import { LoginComponentComponent } from './login-component/login-component.component';
 // import { LogoutComponent } from './logout/logout.component';
 
@@ -43,7 +44,8 @@ import { ShowNotificationComponent } from './show-notification/show-notification
     GamePlayComponent,
     LoginOrRegisterComponent,
     TestCardComponent,
-    ShowNotificationComponent//,
+    ShowNotificationComponent,
+    AllGamesComponent//,
     // LoginComponentComponent,
     // LogoutComponent
   ],

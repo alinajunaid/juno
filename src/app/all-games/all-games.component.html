@@ -1,0 +1,36 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">
+            <h2 class="card-title">List of All Active Games</h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <h4 class="card-header">
+            Select the Game to View
+        </h4>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>Game Name</th>
+                    <th>Description</th>
+                    <th>Start Time</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let game of allGames">
+                        <td>{{game?.GameName}}</td>
+                        <td>{{game?.GameDescription}}</td>
+                        <td>{{game?.CreationDate}}</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm mr-2" (click)="viewGame(game)">View</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

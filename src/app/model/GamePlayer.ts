@@ -5,5 +5,6 @@ export class GamePlayer {
     Gender: number;
     email: string;    
     Id: number;
+    Password: string;
     GamePlayerId: string;
 }

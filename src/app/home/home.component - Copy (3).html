@@ -8,13 +8,9 @@
                 <p class="lead">Welcome To a Fun Game you can Enjoy with Friends and Family</p>
                 <hr class="my-4">
 
-
-
                 <!------------------------------------------------------------------------------->
                 <!-- If the user is not yet logged in -->
                 <div *ngIf="!loggedIn" class="jumbotron" style="text-align: center; opacity: 0.7;">
-
-                    
 
                     <!------------------------------------------------------------------------------->
                     <!-- for returning users who are already registered
@@ -27,23 +23,14 @@
                         <div class="row">
                             <p></p>
                         </div> 
-
-                        <div class="row">
-                            <div class="offset-sm-3 col-sm-2">
-                                <label>User Name</label>
-                            </div>                        
-                            <div>
-                                    <input type="text" alt="Gamer Name" [(ngModel)]='userNameField'>
-                            </div>
+                        <div class="row" style="margin: 5% 15% 2% 15%;">
+                                <label style="padding-left: 20%; padding-right: 5%;">User Name</label>
+                                <input type="text" alt="Gamer Name" [(ngModel)]='userNameField' style="padding-left: 5%; padding-right: 10%;">
                         </div>
 
-                        <div class="row">
-                            <div class="offset-sm-3 col-sm-2">
-                                <label>Password</label>
-                            </div>
-                            <div>
-                                <input type='password' [(ngModel)]='passwordField'>
-                            </div>
+                        <div class="row" style="margin: 1% 15% 1% 15%;">
+                                <label style="padding-left: 20%; padding-right: 7%;">Password</label>
+                                <input type='password' [(ngModel)]='passwordField' style="padding-left: 5%; padding-right: 10%;">
                         </div>
 
                         <div class="row">
@@ -54,38 +41,20 @@
                         </div>
 
                         <div class="row">
-                            <div class="offset-sm-4 col-sm-3" style="float: right;">
-                                <button class="btn btn-info btn-sm mr-3" (click)="login_clicked()">Login</button>
+                            <div class="offset-sm-5 col-sm-3">
+                                <button class="btn btn-info btn-sm mr-2" (click)="login_clicked()">Login</button>
                             </div>
                         </div>
 
                         <div class="row">
                             <p></p>
                         </div>
-                        <div class="row">
-                            <p></p>
-                        </div>
 
-                        <div class="row">
-                            <div class="offset-sm-4">
-                                <span>New User? Please kindly </span>                            
-                                <a href="#" (click)="gotoregister_clicked()">Register here</a>
+                        <div class="row" style="margin: 1% 15% 5% 45%;">
+                            <p>New User?</p>
+                            <div class="col-sm-1">
+                                <a href="#" (click)="gotoregister_clicked()">Register</a>
                             </div>
-                        </div>
-                        <div class="row">
-                            <p></p>
-                        </div>
-                        <div class="row">
-                            <p></p>
-                        </div>
-                        <div class="row">
-                            <p></p>
-                        </div>
-                        <div class="row">
-                            <p></p>
-                        </div>
-                        <div class="row">
-                            <p></p>
                         </div>
                     </div>
 
@@ -162,17 +131,14 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-1">
-                            </div>
-                        </div>                                                
+                        <div class="row"></div>
                     </div>
 
 
                     <!------------------------------------------------------------------------------->
                     <!-- Developed by-->
                     <hr class="my-4" />
-                    <p >Developed By Alina and Junaid Ahsan</p>
+                    <p style="text-align: center; padding-left: 10%;">Developed By Alina and Junaid Ahsan</p>
                 </div>
 
 

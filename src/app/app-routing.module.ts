@@ -8,6 +8,7 @@ import { PlayerComponent } from './player/player.component';
 import { CreateGameComponent } from './create-game/create-game.component';
 import { JoinGameComponent } from './join-game/join-game.component';
 import { GamePlayComponent } from './game-play/game-play.component';
+import { AllGamesComponent } from './all-games/all-games.component';
 // import { LoginComponentComponent } from './login-component/login-component.component';
 // import { MyCanNavigateGuard } from './my-can-navigate.guard';
 // import { LogoutComponent } from './logout/logout.component';
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'players/:GamePlayerId', component: PlayerComponent },
   { path: 'creategame', component: CreateGameComponent },
   { path: 'joingame', component: JoinGameComponent },
-  { path: 'gameplay', component: GamePlayComponent } //,
+  { path: 'gameplay', component: GamePlayComponent },
+  { path: "allgames", component: AllGamesComponent }
+  //,
   // { path: 'login', component: LoginComponentComponent },
   // { path: 'logout', component: LogoutComponent },
   // { path: '**', redirectTo: '' }

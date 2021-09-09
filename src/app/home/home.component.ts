@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormsModule, FormControl, FormGroup, Validators } 
 
 import { BackendApiService } from '../services/backend-api.service';
 import { GamePlayer } from '../model/GamePlayer';
+import { GameLoginRequest } from '../model/GameLoginRequest';
 
 @Component({
   selector: 'app-home',
@@ -49,15 +50,25 @@ export class HomeComponent implements OnInit {
     console.log("login_cilcked() ---> passwordField=" + this.passwordField);
     
     // log user in
-    this.loading = true;
-    if( this.backendsvc.PlayerLoggedIn || this.passwordField ) {
-      this.backendsvc.LoggedInPlayerName = this.userNameField;
-      this.backendsvc.LoggedInPlayerId = this.passwordField;
+    this.loading = true;    
+
+    var x = new GameLoginRequest();
+    x.GamePlayerId = this.userNameField;
+    x.Password = this.passwordField;
+
+    this.backendsvc.LoginRequest(x).subscribe( data => {
+      this.backendsvc.LoggedInPlayerId = data.email;
+      this.backendsvc.LoggedInPlayerEmail = data.email;
+      this.backendsvc.LoggedInPlayerFirstName = data.FirstName;
+      this.backendsvc.LoggedInPlayerLastName = data.LastName;
+      this.backendsvc.LoggedInPlayerUserName = data.name;
+      this.backendsvc.LoggedInPlayerGender = data.Gender;
+      this.backendsvc.IsAuthenticated = true;     
       this.backendsvc.PlayerLoggedIn = true;
       this.welcomeMessage = `Welcome ${this.userNameField}!`;
       this.loading = false;
       console.log("login successful");
-    }  
+    })        
   }
 
   register_clicked() {
@@ -69,6 +80,7 @@ export class HomeComponent implements OnInit {
     registerPlayer.FirstName = this.firstNameField;
     registerPlayer.LastName = this.lastNameField;
     registerPlayer.email = this.userEmailField;
+    registerPlayer.Password = this.passwordField;
     console.log( 'creating Player: ' + JSON.stringify(registerPlayer));
 
     // create player
