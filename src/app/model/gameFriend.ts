@@ -1,4 +1,4 @@
-export class gameFriend
+export class GameFriend
 {
     PlayerEmail: string;
     FriendEmail: string;

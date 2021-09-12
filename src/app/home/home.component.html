@@ -68,7 +68,7 @@
 
                         <div class="row">
                             <div class="offset-sm-4">
-                                <span>New User? Please kindly </span>                            
+                                <span>New User? Please kindly   </span>                            
                                 <a href="#" (click)="gotoregister_clicked()">Register here</a>
                             </div>
                         </div>
@@ -90,6 +90,9 @@
                     </div>
 
 
+
+
+
                     <!------------------------------------------------------------------------------->
                     <!-- This is a New User and needs to Register -->
                     <div *ngIf="userRegistering" id="Register" class="card-body">
@@ -102,7 +105,7 @@
                         </div> 
 
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="offset-sm-3 col-sm-2">
                                 <label>User Name</label>
                             </div>
                             <div class="col-sm-2">
@@ -111,7 +114,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="offset-sm-3 col-sm-2">
                                 <label>First Name</label>
                             </div>
                             <div class="col-sm-2">
@@ -120,7 +123,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="offset-sm-3 col-sm-2">
                                 <label>Last Name</label>
                             </div>
                             <div class="col-sm-2">
@@ -129,7 +132,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="offset-sm-3 col-sm-2">
                                 <label>Email</label>
                             </div>
                             <div class="col-sm-2">
@@ -142,8 +145,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="offset-sm-4 col-sm-2">
-                                <button class="btn btn-info btn-sm mr-2" (click)="register_clicked()">Register</button>
+                            <div class="offset-sm-5 col-sm-3">
+                                <button class="btn btn-info btn-sm mr-3" (click)="register_clicked()">Register</button>
                             </div>
                         </div>
 
@@ -156,8 +159,8 @@
                         </div>
 
                         <div class="row">
-                            <p>Already Registered?</p>
-                            <div class="col-sm-2">
+                            <div class="offset-sm-5">
+                                <span>Already Registered?   </span>
                                 <a href="#" (click)="gotologin_clicked()">Login</a>
                             </div>
                         </div>
@@ -172,7 +175,7 @@
                     <!------------------------------------------------------------------------------->
                     <!-- Developed by-->
                     <hr class="my-4" />
-                    <p >Developed By Alina and Junaid Ahsan</p>
+                    <p>Developed By Alina and Junaid Ahsan</p>
                 </div>
 
 

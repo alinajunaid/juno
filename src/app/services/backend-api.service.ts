@@ -9,7 +9,7 @@ import { GameStatusResponse } from '../model/gamestatus-response';
 import { GameTurnResult } from '../model/game-turn-result';
 import { GameTurn } from '../model/game-turn';
 
-import { gameFriend } from '../model/gameFriend';
+import { GameFriend } from '../model/gameFriend';
 import { GameLoginRequest } from '../model/GameLoginRequest';
 import { GameFriendRequest } from '../model/game-friendrequest';
 
@@ -83,6 +83,14 @@ export class BackendApiService {
         `${this.baseUrl}/TestJunoGetAllPlayerFriends?code=HXqkh9B92QoxyPpH97AW71eXF8qdHY0NCBz1QaG4WDwyMlN9Fc5MEw==`,
         player
       );
+  }
+
+  deleteFriend(friend:GameFriend): Observable<any>{
+    console.log("attempting to delete the friend");
+    return this.http.post<any>(
+      `${this.baseUrl}/TestJunoDeleteteFriend?code=HXqkh9B92QoxyPpH97AW71eXF8qdHY0NCBz1QaG4WDwyMlN9Fc5MEw==`,
+      friend
+    )
   }
 
   getFriendRequests(player: GamePlayer): Observable<any> {

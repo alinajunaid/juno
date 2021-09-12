@@ -102,3 +102,13 @@ Content-Type: application/json
     "Password": "testuser-t3",
     "Gender": 1
 }
+
+### expects GameFriend
+
+http://localhost:7071/api/TestJunoDeleteteFriend
+Content-Type: application/json
+
+{
+    "PlayerEmail": "testuser.t3@testusers.com",
+    "FriendEmail": "testuser.t1@testusers.com"
+}

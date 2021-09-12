@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { GameFriendRequest } from '../model/game-friendrequest';
-import { gameFriend } from '../model/gameFriend';
+import { GameFriend } from '../model/gameFriend';
 import { GamePlayer } from '../model/GamePlayer';
 import { BackendApiService } from '../services/backend-api.service';
 
@@ -20,7 +20,7 @@ export class MyFriendsComponent implements OnInit {
   public currentPlayer: string;
   private ReceivedFriendRequests: any[];
   private loading: boolean;
-  public PlayerFriends: gameFriend[];
+  public PlayerFriends: GameFriend[];
   public PlayerFriendRequests: GameFriendRequest[];
   sendRequestToEmail: string;
   showModal: boolean;
@@ -40,22 +40,22 @@ export class MyFriendsComponent implements OnInit {
   ngOnInit() {
     this.SelectedCard = '<placeholder>';
     this.currentFirstCard = 0;
-    this.dataList = new Array(10);
-    this.dataList[0] = 'test 1';
-    this.dataList[1] = 'test 2';
-    this.dataList[2] = 'test 3';
-    this.dataList[3] = 'test 4';
-    this.dataList[4] = 'test 5';
-    this.dataList[5] = 'test 6';
-    this.dataList[6] = 'test 7';
-    this.dataList[7] = 'test 8';
-    this.dataList[8] = 'test 9';
-    this.dataList[9] = 'test 10';
+    // this.dataList = new Array(10);
+    // this.dataList[0] = 'test 1';
+    // this.dataList[1] = 'test 2';
+    // this.dataList[2] = 'test 3';
+    // this.dataList[3] = 'test 4';
+    // this.dataList[4] = 'test 5';
+    // this.dataList[5] = 'test 6';
+    // this.dataList[6] = 'test 7';
+    // this.dataList[7] = 'test 8';
+    // this.dataList[8] = 'test 9';
+    // this.dataList[9] = 'test 10';
 
-    this.msgList = new Array(3);
-    this.msgList[0] = 'test 1';
-    this.msgList[1] = 'test 2';
-    this.msgList[2] = 'test 3';
+    // this.msgList = new Array(3);
+    // this.msgList[0] = 'test 1';
+    // this.msgList[1] = 'test 2';
+    // this.msgList[2] = 'test 3';
 
     this.modalTitle = 'Testing';
     this.modalMessage = 'Calling Test Run';
@@ -129,6 +129,14 @@ export class MyFriendsComponent implements OnInit {
       this.PlayerFriendRequests.splice(this.PlayerFriendRequests.indexOf(friendRq), 1);
     });
   }
+
+  DeletePlayer(friend: GameFriend) {
+    this.api.deleteFriend(friend).subscribe( data => {
+      this.PlayerFriendRequests.splice(this.PlayerFriends.indexOf(friend), 1);
+    });
+    this.toastr.success("Selected friend was successfully deleted", "NOTE:")
+  }
+
 
   // get eanbleLeft() {
   //   return this.currentFirstCard > 0;
