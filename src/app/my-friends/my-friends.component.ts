@@ -19,7 +19,7 @@ export class MyFriendsComponent implements OnInit {
   private currentFirstCard: number;
   public currentPlayer: string;
   private ReceivedFriendRequests: any[];
-  private loading: boolean;
+  public loading: boolean;
   public PlayerFriends: GameFriend[];
   public PlayerFriendRequests: GameFriendRequest[];
   sendRequestToEmail: string;
@@ -40,22 +40,6 @@ export class MyFriendsComponent implements OnInit {
   ngOnInit() {
     this.SelectedCard = '<placeholder>';
     this.currentFirstCard = 0;
-    // this.dataList = new Array(10);
-    // this.dataList[0] = 'test 1';
-    // this.dataList[1] = 'test 2';
-    // this.dataList[2] = 'test 3';
-    // this.dataList[3] = 'test 4';
-    // this.dataList[4] = 'test 5';
-    // this.dataList[5] = 'test 6';
-    // this.dataList[6] = 'test 7';
-    // this.dataList[7] = 'test 8';
-    // this.dataList[8] = 'test 9';
-    // this.dataList[9] = 'test 10';
-
-    // this.msgList = new Array(3);
-    // this.msgList[0] = 'test 1';
-    // this.msgList[1] = 'test 2';
-    // this.msgList[2] = 'test 3';
 
     this.modalTitle = 'Testing';
     this.modalMessage = 'Calling Test Run';
@@ -136,6 +120,10 @@ export class MyFriendsComponent implements OnInit {
     });
     this.toastr.success("Selected friend was successfully deleted", "NOTE:")
   }
+
+
+  viewFriendProfile(x:any){}
+
 
 
   // get eanbleLeft() {

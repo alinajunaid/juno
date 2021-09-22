@@ -28,4 +28,5 @@ export class AllGamesComponent implements OnInit {
     });
   }
 
+  viewGame(x:any) {}
 }
