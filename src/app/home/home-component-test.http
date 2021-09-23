@@ -25,6 +25,21 @@ Content-Type: application/json
     "Gender": 1
 }
 
+
+### 
+
+https://junogameservice.azurewebsites.net/api/TestJunoLogin?code=HXqkh9B92QoxyPpH97AW71eXF8qdHY0NCBz1QaG4WDwyMlN9Fc5MEw==
+Content-Type: application/json
+
+{
+    "GamePlayerId": "testuser.t2@testusers.com",
+    "FirstName": "",
+    "LastName": "",
+    "email": "testuser.t2@testusers.com",
+    "Password": "testuser-t2",
+    "Gender": 1
+}
+
 ### Requires FriendRequest
 
 http://localhost:7071/api/TestJunoCreateFriendRequest
