@@ -25,7 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/css/bootstrap.spacelab.min.css",
+              "src/css/bootstrap.min.css",
               "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
